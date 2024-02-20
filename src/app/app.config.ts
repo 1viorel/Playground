@@ -4,6 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,7 +19,8 @@ export const appConfig: ApplicationConfig = {
           authDomain: 'fir-testing-38d63.firebaseapp.com',
           messagingSenderId: '348115430164',
         })
-      )
+      ),
+      provideFirestore(() => getFirestore())
     ),
     importProvidersFrom(provideDatabase(() => getDatabase())),
   ],
