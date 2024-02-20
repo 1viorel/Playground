@@ -6,5 +6,20 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), importProvidersFrom(provideFirebaseApp(() => initializeApp({"projectId":"fir-testing-38d63","appId":"1:348115430164:web:db985ad6cc304f332f3001","storageBucket":"fir-testing-38d63.appspot.com","apiKey":"AIzaSyAsGzLx_eIjJlkLX4hRUItLEJep83Zhwdo","authDomain":"fir-testing-38d63.firebaseapp.com","messagingSenderId":"348115430164"}))), importProvidersFrom(provideDatabase(() => getDatabase()))]
+  providers: [
+    provideRouter(routes),
+    importProvidersFrom(
+      provideFirebaseApp(() =>
+        initializeApp({
+          projectId: 'fir-testing-38d63',
+          appId: '1:348115430164:web:db985ad6cc304f332f3001',
+          storageBucket: 'fir-testing-38d63.appspot.com',
+          apiKey: 'AIzaSyAsGzLx_eIjJlkLX4hRUItLEJep83Zhwdo',
+          authDomain: 'fir-testing-38d63.firebaseapp.com',
+          messagingSenderId: '348115430164',
+        })
+      )
+    ),
+    importProvidersFrom(provideDatabase(() => getDatabase())),
+  ],
 };
