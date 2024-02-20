@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "fir-testing-38d63": {
+      "hosting": {
+        "testing": [
+          "fir-testing-38d63"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "fir-testing-38d63"
+  }
+}
