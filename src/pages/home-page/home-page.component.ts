@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { addDoc, collection, Firestore } from '@angular/fire/firestore';
+import { collection, doc, Firestore, getDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-home-page',
@@ -10,9 +10,11 @@ import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 })
 export class HomePageComponent implements OnInit {
   constructor(private fs: Firestore) {}
-
+  number: number = 0;
   ngOnInit() {
-    const testCollection = collection(this.fs, 'test');
-    addDoc(testCollection, { text: 'Fuck you ' });
+    const testCollection = collection(this.fs, 'backend_number');
+    const documentId = 'kEQJFfMWHJuGyAXaRRqF';
+    const documentRef = doc(testCollection, documentId);
+    getDoc(documentRef);
   }
 }
