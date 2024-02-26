@@ -7,7 +7,7 @@ import { Todo } from '../models and enums/todo';
 })
 export class TodoService {
   todosSig = signal<Todo[]>([]);
-  filterSig = signal<Filter[]>([Filter.All]);
+  filterSig = signal<Filter>(Filter.All);
 
   addTodo(text: string, id: string): void {
     const newTodo: Todo = {
