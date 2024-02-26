@@ -1,70 +1,16 @@
-<li class="flex flex-col items-center p-4 gap-1 mt-72">
-  @for (object of objects; track $index) {
-    <ul>
-      <div class="flex flex-row gap-2 justify-center items-center">
-        <p class="font-bold">
-          {{ object }}
-        </p>
-        <div class="flex flex-row justify-center gap-1">
-          <button class="p-1 border rounded-xl">
-            <svg
-              class="w-6 h-6 text-gray-800 dark:text-white"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24">
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18 18 6m0 12L6 6" />
-            </svg>
-          </button>
-          <button class="p-1 border rounded-xl">
-            <svg
-              class="w-6 h-6 text-gray-800 dark:text-white"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24">
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="m5 12 4.7 4.5 9.3-9" />
-            </svg>
-          </button>
-          <button class="p-1 border rounded-xl">
-            <svg
-              class="w-6 h-6 text-gray-800 dark:text-white"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24">
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </ul>
-  }
-</li>
-
-<div class="flex flex-row gap-1 justify-center">
-  <button class="px-4 border-2 border-gray-200 rounded-xl hover:scale-110">
-    All
-  </button>
-  <button class="px-4 border-2 border-gray-200 rounded-xl hover:scale-110">
-    To do
-  </button>
-  <button class="px-4 border-2 border-gray-200 rounded-xl hover:scale-110">
-    Done
-  </button>
-</div>
+<section class="main" [ngClass]="{ hidden: noTodosClass() }">
+  <input
+    id="toggle-all"
+    class="toggle-all"
+    type="checkbox"
+    [checked]="isAllTodosSelected()"
+    (change)="toggleAllTodos($event)" />
+  <label for="toggle-all">Mark all as completed</label>
+  <ul class="todo-list">
+    <app-todo
+      *ngFor="let todo of visibleTodos()"
+      [todo]="todo"
+      [isEditing]="editingId === todo.id"
+      (setEditingId)="setEditingId($event)"></app-todo>
+  </ul>
+</section>
